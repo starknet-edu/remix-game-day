@@ -56,6 +56,16 @@ end
 
 
 ######### 
+# Declaring events
+######### 
+
+# Like on Ethereum, events are not part of the state, but can be used to log things
+#
+@event
+func set_nft_recipient(nft_recipient: felt):
+end
+
+######### 
 # Declaring interfaces
 ######### 
 
@@ -125,6 +135,7 @@ func set_recipient_address{
         syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
         range_check_ptr}(recipient_address: felt ):
     nft_to_mint_recipient_internal.write(recipient_address)
+    set_nft_recipient.emit(recipient_address)
     return ()
 end
 
