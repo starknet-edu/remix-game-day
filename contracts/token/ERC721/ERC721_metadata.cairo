@@ -69,6 +69,10 @@ end
 func next_token_id() -> (next_token_id: felt):
 end
 
+@storage_var
+func has_claimed_before(account:felt) -> (has_claimed_before: felt):
+end
+
 
 #
 # Getters
@@ -230,7 +234,7 @@ func mint{
         pedersen_ptr: HashBuiltin*,
         syscall_ptr: felt*,
         range_check_ptr
-    }(to: felt, token_id: Uint256):
+    }(to: felt):
     Ownable_only_owner()
     let (next_token_id_felt) = next_token_id.read()
     next_token_id.write(next_token_id_felt+1)
@@ -251,7 +255,10 @@ func mint_from_remix{
     let (caller_address) = get_caller_address()
     let (response) = IRemixExampleContract.ping(contract_address = caller_address)
     assert response = 1349480039
-
+    assert to = caller_address
+    let (has_claimed_before_local) = has_claimed_before.read(caller_address)
+    assert has_claimed_before_local = 0
+    has_claimed_before.write(caller_address,1)
     let (next_token_id_felt) = next_token_id.read()
     next_token_id.write(next_token_id_felt+1)
     let next_token_id_uint: Uint256 = Uint256(next_token_id_felt,0)

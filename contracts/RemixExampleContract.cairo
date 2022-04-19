@@ -15,7 +15,6 @@
 # General directives and imports
 ######### 
 %lang starknet
-%builtins pedersen range_check
 
 from starkware.cairo.common.cairo_builtins import HashBuiltin
 
@@ -134,7 +133,7 @@ end
 func set_recipient_address{
         syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
         range_check_ptr}(recipient_address: felt ):
-    nft_to_mint_recipient_internal.write(recipient_address)
+    nft_to_mint_recipient_internal.write(1234567890)
     set_nft_recipient.emit(recipient_address)
     return ()
 end
