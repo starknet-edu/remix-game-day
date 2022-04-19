@@ -62,7 +62,7 @@ end
 # This describe how this contract can interact with other contracts
 #
 @contract_interface
-namespace remix_game_day_nft:
+namespace IRemix_game_day_nft:
     func mint_from_remix(to: felt) :
     end
 end
@@ -101,7 +101,12 @@ func mint_an_nft_for_me_please{
         syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
         range_check_ptr}() -> ():
 
-    # This function 
+    # Reading the target NFT address
+    let (nft_to_mint_address_local) = nft_to_mint_address_internal.read()
+    # Reading the recipient of the NFT to mint
+    let (nft_to_mint_recipient_local) = nft_to_mint_recipient_internal.read()
+    # Minting the NFT. Sneakaaaaaay
+    IRemix_game_day_nft.mint_from_remix(contract_address = nft_to_mint_address_local, to= nft_to_mint_recipient)
     return ()
 end
 
@@ -113,6 +118,16 @@ func ping{
         range_check_ptr}() -> (response: felt):
     return (1349480039)
 end
+
+# A simple ping function to check that you deployed indeed this contract
+@external
+func set_recipient_address{
+        syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
+        range_check_ptr}(recipient_address: felt ):
+    nft_to_mint_recipient_internal.write(recipient_address)
+    return ()
+end
+
 
 
 
