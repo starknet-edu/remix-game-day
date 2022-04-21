@@ -11,6 +11,12 @@
 # - How to deploy StarkNet contracts using remix
 # - How to interact with a deployed contract on StarkNet
 
+## Want to go further? Of course you do! Pick and chose what you want to learn
+# - Learn to read Cairo and interact with contract, no code required! https://github.com/l-henri/starknet-cairo-101
+# - Deploy your own ERC20 https://github.com/l-henri/starknet-erc20
+# - Deploy your own ERC721 https://github.com/l-henri/starknet-erc721
+# - Build a cross layer app https://github.com/l-henri/starknet-messaging-bridge
+
 ######### 
 # General directives and imports
 ######### 
@@ -68,7 +74,7 @@ end
 # Declaring interfaces
 ######### 
 
-# This describe how this contract can interact with other contracts
+# This describe how the current contract can interact with other contracts of type IRemix_game_day_nft
 #
 @contract_interface
 namespace IRemix_game_day_nft:
@@ -104,7 +110,8 @@ end
 #
 
 # This function will call the NFT contract stored in nft_to_mint_address and mint an NFT for nft_to_mint_recipient.
-# This is the final function call you'll have to make. Before doing that, make sure to customize the contract correctly!
+# This is the final function call you'll have to make. 
+# Before doing that, make sure to customize the contract correctly!
 @external
 func mint_an_nft_for_me_please{
         syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
@@ -121,6 +128,8 @@ end
 
 
 # A simple ping function to check that you deployed indeed this contract
+# It won't work as is; you need to make sure it returns "Pong" when it is called
+# This function returns a felt though, so make sure you encode "Pong" as a felt
 @external
 func ping{
         syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
@@ -128,7 +137,8 @@ func ping{
     return (310939380847)
 end
 
-# A simple ping function to check that you deployed indeed this contract
+# A function to let you set variable nft_to_mint_recipient_internal. 
+# You don't have to use it, but it may be useful
 @external
 func set_recipient_address{
         syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
