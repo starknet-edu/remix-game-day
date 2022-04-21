@@ -9,7 +9,7 @@ You have to deploy a specific smart contract that does the following:
 3. Stores your address, to send the NFT to you after minting
 4. Calls the function `mint_from_remix()` to mint an NFT, using both parameters set at 2. and 3.
 
-The NFTs are in contract [](), deploy on StarkNet Goerli testnet.
+The NFTs are in contract [0x07da37281d55440c2f070abe3372d3b0ae213966a662651f7972a2e782a3bcfb](https://goerli.voyager.online/contract/0x07da37281d55440c2f070abe3372d3b0ae213966a662651f7972a2e782a3bcfb), deploy on StarkNet Goerli testnet.
 
 ## Playing
 1. Open [Remix](https://remix.ethereum.org/)
@@ -23,4 +23,4 @@ The NFTs are in contract [](), deploy on StarkNet Goerli testnet.
 ![](captures/compile_contract.png)
 7. Deploy the contract
 ![](captures/deploy_contract.png)
-
+8. User Voyager and Argent X to interact with the contract and call your functions
