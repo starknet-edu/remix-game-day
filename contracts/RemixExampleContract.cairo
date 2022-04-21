@@ -125,7 +125,7 @@ end
 func ping{
         syscall_ptr : felt*, pedersen_ptr : HashBuiltin*,
         range_check_ptr}() -> (response: felt):
-    return (1349480039)
+    return (310939380847)
 end
 
 # A simple ping function to check that you deployed indeed this contract
