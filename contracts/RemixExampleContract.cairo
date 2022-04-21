@@ -115,7 +115,7 @@ func mint_an_nft_for_me_please{
     # Reading the recipient of the NFT to mint
     let (nft_to_mint_recipient_local) = nft_to_mint_recipient_internal.read()
     # Minting the NFT. Sneakaaaaaay
-    IRemix_game_day_nft.mint_from_remix(contract_address = nft_to_mint_address_local, to= nft_to_mint_recipient)
+    IRemix_game_day_nft.mint_from_remix(contract_address=nft_to_mint_recipient_local, to=nft_to_mint_address_local)
     return ()
 end
 
